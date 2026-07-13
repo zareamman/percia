@@ -25,6 +25,9 @@ class SettingsManager
     public function registerSettings(): void
     {
         register_setting('tmdb_importer_settings', 'tmdb_importer_api');
+        register_setting('tmdb_importer_settings', 'tmdb_importer_import');
+        register_setting('tmdb_importer_settings', 'tmdb_importer_images');
+        register_setting('tmdb_importer_settings', 'tmdb_importer_videos');
 
         foreach ($this->sections as $section) {
             $section->registerFields();

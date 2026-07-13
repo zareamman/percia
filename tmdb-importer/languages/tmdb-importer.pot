@@ -1,0 +1,567 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TMDB Importer 1.0.0\n"
+"POT-Creation-Date: 2026-07-13 08:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/Admin/Pages/DashboardPage.php:30
+msgid "TMDB Importer Dashboard"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:35
+msgid "Movies Imported"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:37
+msgid "TV Shows Imported"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:39
+msgid "Pending Imports"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:41
+msgid "Pending Syncs"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:46
+msgid "Quick Actions"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:47
+msgid "Import Movie"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:48
+msgid "Import TV Show"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:49
+msgid "Sync Content"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:50
+msgid "View Jobs"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:53
+msgid "Recent Imports"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:55
+msgid "No recent imports."
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:57
+msgid "Type"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:58
+msgid "TMDB IDs"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:59
+msgid "Status"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:60
+msgid "Progress"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:61
+msgid "Completed"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:65
+msgid "Recent Syncs"
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:67
+msgid "No recent syncs."
+msgstr ""
+
+#: includes/Admin/Pages/DashboardPage.php:71
+msgid "Object IDs"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:23
+msgid "Import from TMDB"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:37
+msgid "Single Import"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:38
+msgid "Bulk Import"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:42
+msgid "Import Type"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:43
+msgid "Movie"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:44
+msgid "TV Show"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:46
+msgid "TMDB ID"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:47
+msgid "Enter the TMDB ID (e.g., 550 for Fight Club)"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:49
+msgid "Options"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:50
+msgid "Skip if already exists"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:51
+msgid "Overwrite existing content"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:53
+msgid "Import all seasons and episodes"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:56
+msgid "Import"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:63
+msgid "TMDB IDs (comma-separated)"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:64
+msgid "Enter multiple TMDB IDs separated by commas"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:66
+msgid "Create Bulk Import Job"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:71
+msgid "Search TMDB"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:73
+msgid "Search for movies or TV shows..."
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:75
+msgid "Search"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:79
+msgid "Search Results"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:80
+msgid "Title"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:81
+msgid "Release/First Air Date"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:82
+msgid "Action"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:84
+msgid "Use This ID"
+msgstr ""
+
+#: includes/Admin/Pages/ImportPage.php:87
+msgid "No results found."
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:23
+msgid "Sync with TMDB"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:33
+msgid "Single Sync"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:34
+msgid "Bulk Sync"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:35
+msgid "Ratings Sync"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:41
+msgid "Post ID"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:42
+msgid "Enter the WordPress Post ID of the movie or TV show to sync"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:44
+msgid "Sync Options"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:45
+msgid "Metadata (overview, dates, etc.)"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:46
+msgid "Ratings"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:47
+msgid "Images"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:48
+msgid "Videos/Trailers"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:49
+msgid "Taxonomies (genres, keywords, people, etc.)"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:50
+msgid "Seasons & Episodes"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:52
+msgid "Sync Now"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:58
+msgid "Post IDs (comma-separated)"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:59
+msgid "Enter WordPress Post IDs separated by commas"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:66
+msgid "Bulk Sync"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:72
+msgid "Post IDs (comma-separated)"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:73
+msgid "Enter WordPress Post IDs (movies or TV shows) separated by commas. Only ratings will be updated."
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:75
+msgid "Sync Ratings"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:79
+msgid "Content Browser"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:80
+msgid "Filter"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:87
+msgid "All Genres"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:90
+msgid "Year"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:97
+msgid "TMDB ID"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:98
+msgid "Rating"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:99
+msgid "Status"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:100
+msgid "Actions"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:104
+msgid "Last synced"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:106
+msgid "Never synced"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:109
+msgid "Sync"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:110
+msgid "Sync Ratings"
+msgstr ""
+
+#: includes/Admin/Pages/SyncPage.php:113
+msgid "No content found matching your criteria."
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:23
+msgid "Import & Sync Jobs"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:26
+msgid "Import Jobs"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:27
+msgid "Sync Jobs"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:31
+msgid "ID"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:32
+msgid "Items"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:33
+msgid "Created"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:34
+msgid "Started"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:35
+msgid "Completed"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:36
+msgid "Actions"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:52
+msgid "Retry"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:53
+msgid "View"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:64
+msgid "Job Details"
+msgstr ""
+
+#: includes/Admin/Pages/JobsPage.php:66
+msgid "Loading..."
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:23
+msgid "TMDB Importer Settings"
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:45
+msgid "Maintenance Actions"
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:47
+msgid "Clear Cache"
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:48
+msgid "Clear all cached TMDB API responses."
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:50
+msgid "Remove Orphaned Content"
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:51
+msgid "Remove seasons, episodes, and relationships that no longer have a parent TV show."
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:53
+msgid "Reset All Settings"
+msgstr ""
+
+#: includes/Admin/Pages/SettingsPage.php:54
+msgid "Reset all plugin settings to defaults (requires confirmation)."
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:23
+msgid "TMDB Importer Logs"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:27
+msgid "All Levels"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:28
+msgid "Limit"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:29
+msgid "Filter"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:30
+msgid "Clear Old Logs"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:34
+msgid "Time"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:35
+msgid "Level"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:36
+msgid "Message"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:37
+msgid "Context"
+msgstr ""
+
+#: includes/Admin/Pages/LogsPage.php:40
+msgid "No logs found."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/APISection.php:18
+msgid "API Settings"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/APISection.php:21
+msgid "Configure your TMDB API credentials."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/APISection.php:24
+msgid "TMDB API Key"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/APISection.php:25
+msgid "Get your API key from TMDB."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/APISection.php:27
+msgid "Language"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/APISection.php:35
+msgid "Region"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImportSection.php:18
+msgid "Import Settings"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImportSection.php:21
+msgid "Configure how imports behave."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImportSection.php:24
+msgid "Skip Existing"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImportSection.php:26
+msgid "Overwrite Existing"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImportSection.php:28
+msgid "Import Missing Seasons"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImportSection.php:30
+msgid "Import Missing Episodes"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImagesSection.php:18
+msgid "Image Settings"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImagesSection.php:21
+msgid "Configure how images are handled."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImagesSection.php:24
+msgid "Download Images to Media Library"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImagesSection.php:25
+msgid "When enabled, images will be downloaded to the WordPress Media Library."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImagesSection.php:27
+msgid "Image Size"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/ImagesSection.php:35
+msgid "Replace Existing Images"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/VideosSection.php:18
+msgid "Video Settings"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/VideosSection.php:21
+msgid "Configure how videos/trailers are handled."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/VideosSection.php:24
+msgid "Download Trailers to Media Library"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/VideosSection.php:25
+msgid "When enabled, trailers will be downloaded to the WordPress Media Library (requires YouTube download support)."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:18
+msgid "Maintenance"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:21
+msgid "Maintenance tools for the plugin."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:24
+msgid "Clear Cache"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:25
+msgid "Clear all cached TMDB API responses."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:27
+msgid "Remove Orphaned Content"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:28
+msgid "Remove seasons, episodes, and relationships that no longer have a parent TV show."
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:30
+msgid "Reset Settings"
+msgstr ""
+
+#: includes/Admin/Settings/Sections/MaintenanceSection.php:31
+msgid "Reset all plugin settings to defaults."
+msgstr ""

@@ -52,34 +52,40 @@ class ImportSection
 
     public function renderSkipExisting(): void
     {
-        $value = get_option('tmdb_importer_skip_existing', true);
+        $options = get_option('tmdb_importer_import', []);
+        $value = $options['skip_existing'] ?? true;
         echo '<input type="checkbox" name="tmdb_importer_import[skip_existing]" value="1" ' . checked($value, true, false) . ' />';
     }
 
     public function renderOverwrite(): void
     {
-        $value = get_option('tmdb_importer_overwrite', false);
+        $options = get_option('tmdb_importer_import', []);
+        $value = $options['overwrite'] ?? false;
         echo '<input type="checkbox" name="tmdb_importer_import[overwrite]" value="1" ' . checked($value, true, false) . ' />';
     }
 
     public function renderImportSeasons(): void
     {
-        $value = get_option('tmdb_importer_import_seasons', true);
+        $options = get_option('tmdb_importer_import', []);
+        $value = $options['import_seasons'] ?? true;
         echo '<input type="checkbox" name="tmdb_importer_import[import_seasons]" value="1" ' . checked($value, true, false) . ' />';
     }
 
     public function renderImportEpisodes(): void
     {
-        $value = get_option('tmdb_importer_import_episodes', true);
+        $options = get_option('tmdb_importer_import', []);
+        $value = $options['import_episodes'] ?? true;
         echo '<input type="checkbox" name="tmdb_importer_import[import_episodes]" value="1" ' . checked($value, true, false) . ' />';
     }
 
     public function save(array $data): bool
     {
-        update_option('tmdb_importer_skip_existing', !empty($data['skip_existing']));
-        update_option('tmdb_importer_overwrite', !empty($data['overwrite']));
-        update_option('tmdb_importer_import_seasons', !empty($data['import_seasons']));
-        update_option('tmdb_importer_import_episodes', !empty($data['import_episodes']));
+        $current = get_option('tmdb_importer_import', []);
+        $current['skip_existing'] = !empty($data['skip_existing']);
+        $current['overwrite'] = !empty($data['overwrite']);
+        $current['import_seasons'] = !empty($data['import_seasons']);
+        $current['import_episodes'] = !empty($data['import_episodes']);
+        update_option('tmdb_importer_import', $current);
         return true;
     }
 }

@@ -10,7 +10,11 @@ use TMDBImporter\Services\TaxonomyService;
 use TMDBImporter\Infrastructure\TMDB\TMDBClient;
 use TMDBImporter\Infrastructure\Cache\ObjectCache;
 use TMDBImporter\Infrastructure\Logging\Logger;
-use TMDBImporter\Database\Migrations\MigrationManager;
+use TMDBImporter\Repositories\Database\ImportJobRepository;
+use TMDBImporter\Repositories\Database\SeasonRepository;
+use TMDBImporter\Repositories\Database\EpisodeRepository;
+use TMDBImporter\Repositories\WordPress\MovieRepository;
+use TMDBImporter\Repositories\WordPress\TVShowRepository;
 
 class Bootstrap
 {
@@ -35,14 +39,31 @@ class Bootstrap
         return self::$instance;
     }
 
+    public static function activate(): void
+    {
+        $migrationManager = new MigrationManager();
+        $migrationManager->run();
+
+        flush_rewrite_rules();
+    }
+
+    public static function deactivate(): void
+    {
+        wp_clear_scheduled_hook('tmdb_importer_sync_cron');
+        flush_rewrite_rules();
+    }
+
+    public static function uninstall(): void
+    {
+        // Uninstall is handled in uninstall.php
+    }
+
     private function bootstrap(): void
     {
         $this->loadConfiguration();
         $this->runMigrations();
         $this->registerServices();
         $this->registerHooks();
-        $this->registerPostTypes();
-        $this->registerTaxonomies();
         $this->registerRestRoutes();
         $this->registerAdmin();
         $this->scheduleCronJobs();
@@ -96,13 +117,24 @@ class Bootstrap
             $this->services['logger']
         );
 
+        $this->services['import_job_repo'] = new ImportJobRepository();
+        $this->services['movie_repo'] = new MovieRepository();
+        $this->services['tv_show_repo'] = new TVShowRepository();
+        $this->services['season_repo'] = new SeasonRepository();
+        $this->services['episode_repo'] = new EpisodeRepository();
+
         $this->services['import'] = new ImportService(
             $this->services['tmdb_client'],
             $this->services['metadata'],
             $this->services['taxonomy'],
             $this->services['image'],
             $this->services['video'],
-            $this->services['logger']
+            $this->services['logger'],
+            $this->services['import_job_repo'],
+            $this->services['movie_repo'],
+            $this->services['tv_show_repo'],
+            $this->services['season_repo'],
+            $this->services['episode_repo']
         );
 
         $this->services['sync'] = new SyncService(
@@ -117,86 +149,37 @@ class Bootstrap
 
     private function registerHooks(): void
     {
+        // Register all WordPress hooks via HookRegistry
+        \TMDBImporter\Hooks\HookRegistry::register();
+
+        // AJAX handlers
+        require_once TMDB_IMPORTER_PATH . 'includes/Admin/AJAX/AjaxHandler.php';
+        new \TMDBImporter\Admin\AJAX\AjaxHandler();
+
+        // Cron jobs
+        add_action('tmdb_importer_sync_cron', [$this, 'runSyncCron']);
     }
 
-    private function registerPostTypes(): void
+    public function runSyncCron(): void
     {
-        $labelsMovie = [
-            'name' => 'Movies',
-            'singular_name' => 'Movie',
-            'add_new' => 'Add New',
-            'add_new_item' => 'Add New Movie',
-            'edit_item' => 'Edit Movie',
-            'new_item' => 'New Movie',
-            'view_item' => 'View Movie',
-            'search_items' => 'Search Movies',
-            'not_found' => 'No movies found',
-            'not_found_in_trash' => 'No movies found in Trash',
-        ];
-
-        register_post_type('tmdb_movie', [
-            'labels' => $labelsMovie,
-            'public' => true,
-            'has_archive' => true,
-            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
-            'rewrite' => ['slug' => 'movie'],
-            'menu_icon' => 'dashicons-video-alt3',
-            'show_in_rest' => true,
-        ]);
-
-        $labelsTVShow = [
-            'name' => 'TV Shows',
-            'singular_name' => 'TV Show',
-            'add_new' => 'Add New',
-            'add_new_item' => 'Add New TV Show',
-            'edit_item' => 'Edit TV Show',
-            'new_item' => 'New TV Show',
-            'view_item' => 'View TV Show',
-            'search_items' => 'Search TV Shows',
-            'not_found' => 'No TV shows found',
-            'not_found_in_trash' => 'No TV shows found in Trash',
-        ];
-
-        register_post_type('tmdb_tv_show', [
-            'labels' => $labelsTVShow,
-            'public' => true,
-            'has_archive' => true,
-            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
-            'rewrite' => ['slug' => 'tv-show'],
-            'menu_icon' => 'dashicons-video-alt2',
-            'show_in_rest' => true,
-        ]);
-    }
-
-    private function registerTaxonomies(): void
-    {
-        $taxonomies = [
-            'tmdb_genre' => ['tmdb_movie', 'tmdb_tv_show'],
-            'tmdb_release_year' => ['tmdb_movie', 'tmdb_tv_show'],
-            'tmdb_keyword' => ['tmdb_movie', 'tmdb_tv_show'],
-            'tmdb_person' => ['tmdb_movie', 'tmdb_tv_show'],
-            'tmdb_network' => ['tmdb_tv_show'],
-            'tmdb_production_company' => ['tmdb_movie', 'tmdb_tv_show'],
-        ];
-
-        foreach ($taxonomies as $taxonomy => $objectTypes) {
-            register_taxonomy($taxonomy, $objectTypes, [
-                'labels' => [
-                    'name' => ucfirst(str_replace('tmdb_', '', str_replace('_', ' ', $taxonomy))) . 's',
-                    'singular_name' => ucfirst(str_replace('tmdb_', '', str_replace('_', ' ', $taxonomy))),
-                ],
-                'public' => true,
-                'hierarchical' => false,
-                'show_in_rest' => true,
-                'show_admin_column' => true,
-                'query_var' => true,
-                'rewrite' => ['slug' => str_replace('tmdb_', '', $taxonomy)],
-            ]);
-        }
+        // This would trigger scheduled sync jobs
+        // For now, just a placeholder
+        $logger = $this->services['logger'] ?? new Logger();
+        $logger->info('Sync cron job triggered');
     }
 
     private function registerRestRoutes(): void
     {
+        add_action('rest_api_init', function () {
+            $importController = new ImportController();
+            $importController->register_routes();
+
+            $syncController = new SyncController();
+            $syncController->register_routes();
+
+            $jobsController = new JobsController();
+            $jobsController->register_routes();
+        });
     }
 
     private function registerAdmin(): void

@@ -44,14 +44,16 @@ class APISection
 
     public function renderApiKey(): void
     {
-        $value = get_option('tmdb_importer_api', ['api_key' => ''])['api_key'] ?? '';
+        $options = get_option('tmdb_importer_api', []);
+        $value = $options['api_key'] ?? '';
         echo '<input type="password" name="tmdb_importer_api[api_key]" value="' . esc_attr($value) . '" class="regular-text" />';
         echo '<p class="description">Get your API key from <a href="https://www.themoviedb.org/settings/api" target="_blank">TMDB</a>.</p>';
     }
 
     public function renderLanguage(): void
     {
-        $value = get_option('tmdb_importer_api', ['language' => 'en-US'])['language'] ?? 'en-US';
+        $options = get_option('tmdb_importer_api', []);
+        $value = $options['language'] ?? 'en-US';
         $languages = [
             'en-US' => 'English (US)',
             'en-GB' => 'English (UK)',
@@ -72,7 +74,8 @@ class APISection
 
     public function renderRegion(): void
     {
-        $value = get_option('tmdb_importer_api', ['region' => 'US'])['region'] ?? 'US';
+        $options = get_option('tmdb_importer_api', []);
+        $value = $options['region'] ?? 'US';
         $regions = [
             'US' => 'United States',
             'GB' => 'United Kingdom',
@@ -90,5 +93,15 @@ class APISection
             echo '<option value="' . esc_attr($code) . '" ' . selected($value, $code, false) . '>' . esc_html($name) . '</option>';
         }
         echo '</select>';
+    }
+
+    public function save(array $data): bool
+    {
+        $current = get_option('tmdb_importer_api', []);
+        $current['api_key'] = sanitize_text_field($data['api_key'] ?? '');
+        $current['language'] = sanitize_text_field($data['language'] ?? 'en-US');
+        $current['region'] = sanitize_text_field($data['region'] ?? 'US');
+        update_option('tmdb_importer_api', $current);
+        return true;
     }
 }
